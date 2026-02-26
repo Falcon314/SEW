@@ -92,7 +92,7 @@ public class Account {
         sb.append("Account #").append(this.getAccountId())
                 .append(" - Guthaben: ").append(this.getBalance())
                 .append(" Gold | Inventar: ");
-        if (this.inventory != null && inventory.length >0) {
+        if (this.inventory != null && this.inventory.length >0) {
             for (int i = 0; i < this.inventory.length - 1; i++) {
                 if (this.inventory[i] != null) {
                     sb.append(this.inventory[i].itemData()).append(", ");
@@ -106,5 +106,5 @@ public class Account {
             sb.append("leer");
         }
         return sb.toString();
-    }sout
+    }
 }
