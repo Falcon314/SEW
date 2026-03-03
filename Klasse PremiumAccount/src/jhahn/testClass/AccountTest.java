@@ -21,7 +21,7 @@ public class AccountTest {
         }
         premiumAccount.chargeMonthlyFee();
         System.out.println(premiumAccount.accountData());
-        System.out.println("----- Test von toString() und equals() aus der Klasse Object -----");
+        System.out.println("----- Test von toString() und equals() aus der Klasse Object -----");                                                                                                                   
         Account player1 = new Account(01, 100, 10);
         System.out.println("Account: " + player1);
         Account player2 = new Account(01, 100, 10);
