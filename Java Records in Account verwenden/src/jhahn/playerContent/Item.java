@@ -8,16 +8,17 @@ public record Item(String name, double cost) {
      * @param name der Name des Items
      * @throws IllegalArgumentException wenn der Name null ist
      */
-    public Item(String name) {
+    public Item(String name) throws IllegalArgumentException {
         this(name, 0.0);
     }
+
     /**
      * Konstruiert ein Item mit dem angegebenen Namen und Kosten.
      * @param name der Name des Items
      * @param cost die Kosten des Items
      * @throws IllegalArgumentException wenn die Kosten negativ sind oder der Name null ist
      */
-    public Item{
+    public Item { // Kein "throws IllegalArgumentException" weil kompakter Konstruktor nicht mit throws deklariert werden sollte(gibt Compile-Fehler)
         if (cost < 0) throw new IllegalArgumentException("Cost must be non-negative");
         if (name == null) throw new IllegalArgumentException("Name cannot be null");
     }

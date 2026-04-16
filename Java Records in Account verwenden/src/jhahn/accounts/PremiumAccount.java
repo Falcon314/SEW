@@ -48,7 +48,7 @@ public class PremiumAccount extends Account{
      * @param premiumFee die zu setzende Gebühr
      * @throws IllegalArgumentException wenn die Gebühr negativ ist
      */
-    public void setPremiumFee(int premiumFee) {
+    public void setPremiumFee(int premiumFee) throws IllegalArgumentException {
         if (premiumFee < 0) throw new IllegalArgumentException("Premium fee must be non-negative");
         this.premiumFee = premiumFee;
     }
@@ -66,7 +66,7 @@ public class PremiumAccount extends Account{
      * @param discountRate der zu setzende Rabattsatz
      * @throws IllegalArgumentException wenn der Rabattsatz nicht zwischen 0.0 und 1.0 liegt
      */
-    public void setDiscountRate(double discountRate) {
+    public void setDiscountRate(double discountRate) throws IllegalArgumentException {
         if (discountRate < 0.0 || discountRate > 1.0) throw new IllegalArgumentException("Discount rate must be between 0.0 and 1.0");
         this.discountRate = discountRate;
     }
@@ -109,8 +109,8 @@ public class PremiumAccount extends Account{
         if (item == null) return false;
         int discountedPrice = (int) (item.getCost() * (1.0 - this.discountRate));
         //item.setCost(discountedPrice); statt item neu zu bepreisen, neu erstellen mit Rabatt
-
-        return super.buyItem(new Item(item.getName(), discountedPrice));
+        item = new Item(item.getName(), discountedPrice); // kann den Preis des Items nicht negativ machen, da discountRate zwischen 0.0 und 1.0 liegt
+        return super.buyItem(item);
     }
 
     /**
@@ -144,7 +144,7 @@ public class PremiumAccount extends Account{
 
     /**
      * Vergleicht diesen PremiumAccount mit einem anderen auf Gleichheit.
-     * @param obj der andere Objekt zum Vergleich
+     * @param obj das andere Objekt zum Vergleich
      * @return true, wenn gleich, sonst false
      */
     @Override

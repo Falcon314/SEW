@@ -103,10 +103,13 @@ public class Account implements UserAccount, Identifizierbar {
      * Setzt ein Item an dem angegebenen Index im Inventar, wenn der Index gültig ist.
      * @param index der Index, an dem das Item gesetzt werden soll
      * @param item das zu setzende Item
+     * @throws ArrayIndexOutOfBoundsException wenn der Index außerhalb der Inventargrenzen liegt
      */
-    public void setItem(int index, Item item) {
+    public void setItem(int index, Item item) throws ArrayIndexOutOfBoundsException {
         if (index >= 0 && index < this.inventory.length) {
             this.inventory[index] = item;
+        } else {
+            throw new ArrayIndexOutOfBoundsException("Index out of inventory bounds");
         }
     }
 
@@ -131,7 +134,7 @@ public class Account implements UserAccount, Identifizierbar {
         for (int i = 0; i < inventory.length; i++) {
             if (inventory[i] == null) {
                 inventory[i] = item;
-                balance -= item.getCost();
+                balance -= item.getCost(); // kann nicht negativ werden, da vorher geprüft wurde, dass genug Guthaben vorhanden ist
                 return true;
             }
         }
@@ -142,7 +145,7 @@ public class Account implements UserAccount, Identifizierbar {
             }
             newInventory[inventory.length] = item;
             inventory = newInventory;
-            balance -= item.getCost();
+            balance -= item.getCost(); // kann nicht negativ werden, da vorher geprüft wurde, dass genug Guthaben vorhanden ist
             return true;
         }
         return false;
