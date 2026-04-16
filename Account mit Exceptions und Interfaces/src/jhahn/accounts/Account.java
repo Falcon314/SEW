@@ -59,7 +59,8 @@ public class Account implements UserAccount, Identifizierbar {
      * @param uploadCredit der Betrag, der zum Guthaben hinzugefügt werden soll
      */
     @Override
-    public void increaseBalance(double uploadCredit) {
+    public void increaseBalance(double uploadCredit) throws IllegalArgumentException {
+        if (uploadCredit<0) throw new IllegalArgumentException("Upload credit has to be positive");
         this.balance += (int) uploadCredit;
     }
 

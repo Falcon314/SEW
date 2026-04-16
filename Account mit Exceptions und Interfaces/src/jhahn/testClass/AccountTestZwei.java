@@ -62,5 +62,21 @@ public class AccountTestZwei {
         } catch (NegativeBalanceException e) {
             System.out.println("NegativeBalanceException für PremiumAccount gefangen: " + e.getMessage());
         }
+
+
+        // Test für increaseBalance mit negativem Betrag
+         try {
+             Account account = new Account(1111, 100, 5);
+             account.increaseBalance(50);
+             System.out.println("Keine Exception für Account.increaseBalance geworfen");
+         } catch (NegativeBalanceException e) {System.out.println("NegativeBalanceException für Account.increaseBalance gefangen: " + e.getMessage());
+         }
+         try {
+             PremiumAccount premiumAccount = new PremiumAccount(2222, 200, 5, 10, 0.1);
+             premiumAccount.increaseBalance(-50);
+             System.out.println("Keine Exception für PremiumAccount.increaseBalance geworfen");
+         } catch (NegativeBalanceException e) {
+             System.out.println("NegativeBalanceException für PremiumAccount.increaseBalance gefangen: " + e.getMessage());
+         }
     }
 }
