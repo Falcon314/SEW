@@ -11,9 +11,7 @@ public class Item {
      * @param name der Name des Items
      * @param cost die Kosten des Items
      */
-    public Item(String name, int cost) {
-        this.name = "Default";
-        this.cost = 0;
+    public Item(String name, int cost) throws IllegalArgumentException {
         setName(name);
         setCost(cost);
     }
@@ -31,7 +29,7 @@ public class Item {
      * @param name der zu setzende Name
      * @throws IllegalArgumentException wenn der Name null ist
      */
-    public void setName(String name) {
+    public void setName(String name) throws IllegalArgumentException {
         if (name == null) throw new IllegalArgumentException("Name cannot be null");
         this.name = name;
     }
@@ -49,7 +47,7 @@ public class Item {
      * @param cost die zu setzenden Kosten
      * @throws IllegalArgumentException wenn die Kosten negativ sind
      */
-    public void setCost(int cost) {
+    public void setCost(int cost) throws IllegalArgumentException {
         if (cost < 0) throw new IllegalArgumentException("Cost must be non-negative");
         this.cost = cost;
     }
