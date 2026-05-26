@@ -104,9 +104,9 @@ public class MastermindLayout extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             switch(e.getActionCommand()){
-                case "check": drawRow(1); break;
+                case "check": clearAll(); break;
                 case "losung": drawRow(2); break;
-                case "neu": clearAll(); break;
+                case "neu": drawRow(1); break;
             }
         }
     }
