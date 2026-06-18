@@ -36,6 +36,7 @@ public class MastermindLayout extends JPanel {
 
         // --------- FormPanels ---------
         JPanel centerPanel = new JPanel(new GridLayout(2,5,5,5));
+        centerPanel.setBackground(Color.WHITE);
         topPanels = new FormPanel[5];
         bottomPanels = new FormPanel[5];
 
