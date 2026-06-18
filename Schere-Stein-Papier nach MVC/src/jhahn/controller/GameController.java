@@ -6,11 +6,11 @@ import jhahn.view.GameFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Game implements    ActionListener {
+public class GameController implements    ActionListener {
     private final GameModel model; // Attribut für die Referenz für das GameModel
     private final GameFrame view; // Attribut für die Referenz für das GameView
 
-    public Game() {
+    public GameController() {
         this.model = new GameModel(); // Setzen von model
         this.view = new GameFrame(this); // Setzen von view
 
@@ -27,7 +27,7 @@ public class Game implements    ActionListener {
     }
 
     public static void main(String[] args) {
-        new Game();
+        new GameController();
     }
 }
 
