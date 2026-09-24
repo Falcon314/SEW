@@ -27,7 +27,7 @@ public class MastermindFrame extends JFrame implements MastermindGUI {
         nBtn.setActionCommand("neu");
         lBtn.setActionCommand("losung");
 
-        getContentPane().add(panel);
+        add(panel);
 
         this.setVisible(true);
     }
